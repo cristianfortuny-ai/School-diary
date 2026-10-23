@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#6558d3">
+  <title>School Diary — memes del cole</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">📚 School Diary</a>
+    <nav id="nav" class="nav hidden">
+      <button class="nav-btn active" data-view="feed">Memes</button>
+      <button class="nav-btn" data-view="stories">Estados</button>
+      <button class="nav-btn" data-view="chats">Chats</button>
+      <a id="admin-link" class="nav-btn hidden" href="/admin.html">Administración</a>
+      <span id="nav-user" class="nav-user"></span>
+      <button id="logout-btn" class="button button-light">Salir</button>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <section id="auth-panel" class="auth-card">
+      <div class="hero-emoji">😂📚</div>
+      <p class="eyebrow">TU COMUNIDAD ESCOLAR</p>
+      <h1>Los mejores memes pasan aquí.</h1>
+      <p class="muted">Comparte memes, mira estados y habla con tus amigos del cole.</p>
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-auth-tab="login">Iniciar sesión</button>
+        <button class="auth-tab" data-auth-tab="register">Crear cuenta</button>
+      </div>
+      <form id="auth-form" class="stack">
+        <label id="name-wrap" class="hidden">Nombre visible
+          <input name="displayName" autocomplete="nickname" minlength="2" maxlength="50">
+        </label>
+        <label>Correo electrónico
+          <input name="email" type="email" autocomplete="email" required>
+        </label>
+        <label>Contraseña
+          <input name="password" type="password" autocomplete="current-password" minlength="10" required>
+          <small>Usa al menos 10 caracteres.</small>
+        </label>
+        <button class="button button-primary" type="submit" id="auth-submit">Iniciar sesión</button>
+      </form>
+      <div class="or"><span>o continúa con</span></div>
+      <a class="button google-button" href="/api/auth/google">G&nbsp; Continuar con Google</a>
+      <p id="auth-message" class="message" role="status"></p>
+      <p class="tiny muted">Sé respetuoso: no compartas información personal ni publiques fotos de otras personas sin permiso.</p>
+    </section>
+
+    <section id="app-panel" class="hidden">
+      <div class="welcome-row">
+        <div><p class="eyebrow">TU RINCÓN DEL COLE</p><h1 id="view-title">Muro de memes</h1></div>
+        <span class="pill">✦ School Diary</span>
+      </div>
+
+      <section id="feed-view" class="view">
+        <form id="post-form" class="composer">
+          <h2>Sube un meme</h2>
+          <label>Texto (opcional)<input name="caption" maxlength="500" placeholder="Ponle contexto al meme…"></label>
+          <label class="file-label">Imagen o vídeo<input name="media" type="file" accept="image/jpeg,image/png,image/gif,image/webp,video/mp4,video/webm" required></label>
+          <button class="button button-primary" type="submit">＋ Publicar meme</button>
+          <p class="message" id="post-message" role="status"></p>
+        </form>
+        <div id="posts" class="masonry"></div>
+      </section>
+
+      <section id="stories-view" class="view hidden">
+        <form id="story-form" class="composer">
+          <h2>Comparte un estado (24 horas)</h2>
+          <label>Texto breve<input name="caption" maxlength="200" placeholder="¿Qué tal el día?"></label>
+          <label class="file-label">Imagen o vídeo<input name="media" type="file" accept="image/jpeg,image/png,image/webp,video/mp4,video/webm" required></label>
+          <button class="button button-primary" type="submit">Publicar estado</button>
+          <p class="message" id="story-message" role="status"></p>
+        </form>
+        <div id="stories" class="story-grid"></div>
+      </section>
+
+      <section id="chats-view" class="view hidden">
+        <div class="chat-layout">
+          <aside class="chat-sidebar">
+            <h2>Conversaciones</h2>
+            <button id="new-chat" class="button button-light">＋ Nuevo chat</button>
+            <div id="conversations"></div>
+            <div id="people" class="people-list hidden"></div>
+          </aside>
+          <section class="chat-main">
+            <div id="chat-empty" class="empty-state">Elige una conversación o inicia un chat.</div>
+            <div id="chat-active" class="hidden">
+              <div id="chat-messages" class="chat-messages"></div>
+              <form id="message-form" class="message-form">
+                <input name="body" maxlength="4000" placeholder="Escribe un mensaje…" required>
+                <button class="button button-primary">Enviar</button>
+              </form>
+            </div>
+          </section>
+        </div>
+      </section>
+    </section>
+  </main>
+  <footer>School Diary · Comparte con respeto 💜</footer>
+  <script src="/js/app.js" defer></script>
+</body>
+</html>

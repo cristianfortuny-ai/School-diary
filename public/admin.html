@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Administración — School Diary</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">📚 School Diary</a>
+    <a class="nav-btn" href="/">← Volver a la web</a>
+  </header>
+  <main class="admin-layout">
+    <div class="welcome-row"><div><p class="eyebrow">ZONA PRIVADA</p><h1>Administración</h1></div><span class="pill">Solo admins</span></div>
+    <p class="muted">Gestiona las cuentas de la comunidad. Las acciones se verifican en el servidor.</p>
+    <div id="admin-message" class="message" role="status"></div>
+    <div class="table-wrap"><table><thead><tr><th>Usuario</th><th>Correo</th><th>Rol</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="users-table"></tbody></table></div>
+  </main>
+  <script src="/js/admin.js" defer></script>
+</body>
+</html>
